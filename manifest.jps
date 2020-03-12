@@ -4,8 +4,8 @@
   "id": "minecraft-server",
   "name": "Minecraft Server",
   "description": "Minecraft server allows players to play online or via a local area network with other people.",
-  "logo": "https://github.com/jelastic-jps/minecraft-server/raw/master/images/minecraft-logo-90px.png",
-  "homepage": "https://github.com/jelastic-jps/minecraft-server",
+  "logo": "https://github.com/dynacentri/minecraft-server/raw/master/images/minecraft-logo-90px.png",
+  "homepage": "https://github.com/dynacentri/minecraft-server",
   "nodes": [
     {
       "docker": {
@@ -37,7 +37,7 @@
   "actions": {
     "sendEmail": {
       "install": {
-        "jps": "https://raw.githubusercontent.com/jelastic-jps/minecraft-server/master/addons/sendEmail.jps",
+        "jps": "https://raw.githubusercontent.com/dynacentri/minecraft-server/master/addons/sendEmail.jps",
         "settings": {
           "url": "${this.url}"
         }
@@ -48,21 +48,21 @@
         "echo \"eula=true\" > /data/eula.txt",
         "sed  -i \"/usermod\\|groupmod/d\" /start",
         "apk add screen",
-        "wget https://github.com/jelastic-jps/minecraft-server/raw/master/properties/server.properties -O /data/server.properties",
-        "wget https://github.com/jelastic-jps/minecraft-server/raw/master/lib/jelastic-gc-agent.jar -O /data/jelastic-gc-agent.jar",
-        "wget https://github.com/jelastic-jps/minecraft-server/raw/master/scripts/memoryConfig.sh -O /data/memoryConfig.sh",
-        "wget https://github.com/jelastic-jps/minecraft-server/raw/master/scripts/start-server.sh -O /start-server.sh",
+        "wget https://github.com/dynacentri/minecraft-server/raw/master/properties/server.properties -O /data/server.properties",
+        "wget https://github.com/dynacentri/minecraft-server/raw/master/lib/jelastic-gc-agent.jar -O /data/jelastic-gc-agent.jar",
+        "wget https://github.com/dynacentri/minecraft-server/raw/master/scripts/memoryConfig.sh -O /data/memoryConfig.sh",
+        "wget https://github.com/dynacentri/minecraft-server/raw/master/scripts/start-server.sh -O /start-server.sh",
         "chmod +x /start-server.sh",
         "mkdir -p /data/web/",
         "chown -R minecraft:minecraft /data",
-        "wget https://github.com/jelastic-jps/minecraft-server/raw/master/web/index.html -O /data/web/index.html",
-        "wget https://github.com/jelastic-jps/minecraft-server/raw/master/scripts/start-web.sh -O /data/start-web.sh",
+        "wget https://github.com/dynacentri/minecraft-server/raw/master/web/index.html -O /data/web/index.html",
+        "wget https://github.com/dynacentri/minecraft-server/raw/master/scripts/start-web.sh -O /data/start-web.sh",
         "bash /data/start-web.sh"
       ],
       "user": "minecraft"
     },
     "addEndpoint": {
-      "script": "https://github.com/jelastic-jps/minecraft-server/raw/master/scripts/addEndpoint.js",
+      "script": "https://github.com/dynacentri/minecraft-server/raw/master/scripts/addEndpoint.js",
       "params": {
         "nodeId": "${nodes.cp.first.id}",
         "port": 25565
